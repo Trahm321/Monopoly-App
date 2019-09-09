@@ -9,3 +9,4 @@ A web app made in Python Flask, that allows users to maintain monopoly money. Th
 ## TODO
 - Add alerts when an user makes an error
 - Add new rulesets (The current ruleset is custom to what me and my friends use)
+- Fix the refresh system
