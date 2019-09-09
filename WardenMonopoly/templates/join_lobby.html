@@ -1,0 +1,32 @@
+<head>
+    <meta http-equiv="refresh" content="3"/>
+</head>
+
+
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+        <div class="card" >
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="card-title">
+                        <h4 class="center-align">Waiting to start...</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="card-action">
+                        <ul class="collection">
+                            <li class="collection-item"><h6><strong>List of Players</strong></h6></li>
+                            {% for player in players %}
+                                <li class="collection-item">{{ player }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

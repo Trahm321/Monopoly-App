@@ -1,0 +1,162 @@
+
+
+<head>
+    <title>Warden Woods Monopoly</title>
+    <meta http-equiv="refresh" content="7"/>
+</head>
+
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+        <div class="card">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="card-panel center-align" style="background-color: {{ color }}">
+                        <h2><span class="{{ font_color }}-text">{{ funds }}</span></h2>
+                        <h6><span class="{{ font_color }}-text">Your Funds</span></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form method="POST" action="/fund_transfer" name="money_sender">
+            <div class="card">
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <div class="card-content">
+                            <h6><strong>Send Money</strong></h6>
+                            <div class="row">
+                                <div class="col s6 m6 l6 form-group">
+                                    <div class="input-field">
+                                        <input class="center-align" placeholder="Amount to Send" id="send_amount" name="send_amount" type="number">
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l6">
+                                    <label>Select Receiver</label>
+                                    <select class="browser-default " id="receiver" name="receiver">
+                                        <option value="null" disabled selected>Player</option>
+                                        <option value="bank">Bank</option>
+                                        <option value="free_parking">Free Parking</option>
+                                        {% for player in removed_players %}
+                                            <option values="{{ player }}">{{ player }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <button id="send_button" class="btn waves-effect waves-light center-align" type="submit" name="submit" value="submit" style="background-color: #20BF55; width: 100%">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        {% if player_type == 'banker' %}
+            <form method="post" action="/bank_pays">
+                <div class="card">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="card-content">
+                                <h6><strong>Send Money</strong></h6>
+                                <i class="material-icons tiny">account_balance</i>
+                                <div class="row">
+                                    <div class="col s6 m6 l6 form-group">
+                                        <div class="input-field">
+                                            <input class="center-align" placeholder="Amount to Send" id="send_amount" name="send_amount" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="col s6 m6 l6">
+                                        <label>Select Receiver</label>
+                                        <select class="browser-default " id="receiver" name="receiver">
+                                            <option value="null" disabled selected>Player</option>
+                                            <option value="free_parking">Free Parking</option>
+                                            {% for player in full_players %}
+                                                <option values="{{ player }}">{{ player }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <button id="send_button" class="btn waves-effect waves-light center-align" type="submit" name="submit" value="submit" style="background-color: #20BF55; width: 100%">Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form method="post" action="/pass_go">
+                <div class="card">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="card-content">
+                                <h6><strong>Pass Go</strong></h6>
+                                <i class="material-icons tiny">account_balance</i>
+                                <div class="row">
+                                    <div class="col s12 m12 l12">
+                                        <label>Select Receiver</label>
+                                        <select class="browser-default" id="receiver" name="receiver">
+                                            <option value="" disabled selected>Player</option>
+                                            {% for player in full_players %}
+                                                <option values="{{ player }}">{{ player }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12 m12 l12">
+                                        <button id="go_money_button" class="btn waves-effect waves-light" type="submit" name="action" style="background-color: #20BF55;
+                                 width: 100%;">Send</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form method="post" action="/lotto_pays">
+                <div class="card">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="card-content">
+                                <h6><strong>Lotto</strong></h6>
+                                <i class="material-icons tiny">account_balance</i>
+                                <div class="row">
+                                    <div class="col s12 m12 l12">
+                                        <label>Select Receiver</label>
+                                        <select class="browser-default" id="receiver" name="receiver" >
+                                            <option value="" disabled selected>Player</option>
+                                            {% for player in full_players %}
+                                                <option values="{{ player }}">{{ player }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12 m12 l12">
+                                        <button id="lotto_money_button" class="btn waves-effect waves-light" type="submit" name="action" style="background-color: #20BF55;
+                                 width: 100%;">Send</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- Banker Options End -->
+
+        {% endif %}
+        <div class="row">
+            <div class="col s6 m6 l6">
+                <button id="refresh_button" class="btn waves-effect waves-light" type="submit" name="action" style="background-color: #D90429; width: 100%">Refresh</button>
+            </div>
+            <div class="col s6 m6 l6">
+                <button id="log_button" class="btn waves-effect waves-light" type="submit" name="action" style="background-color: #757575; width: 100%">Log</button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        document.getElementById("refresh_button").onclick = function () {
+            location.href = "/play";
+        };
+        document.getElementById("log_button").onclick = function () {
+            location.href = "/logs";
+        };
+    </script>
+
+{% endblock %}

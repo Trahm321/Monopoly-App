@@ -1,0 +1,61 @@
+<head>
+    <meta http-equiv="refresh" content="25"/>
+</head>
+
+{% extends 'base.html' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="card">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="card-title">
+                        <h4 class="center-align">Game Setup</h4>
+                    </div>
+                </div>
+            </div>
+            <form method="POST" action="">
+                <div class="row form-group">
+                    <div class="col s12 m12 l12">
+                        <div class="card-action">
+                            <div class="input-field">
+                                <input class="center-align" placeholder="Please enter starting funds amount" id="startup_funds" name="startup_funds" type="number">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <div class="card-action">
+                            <ul class="collection">
+                                {% for item in handler %}
+                                    <li class="collection-item">{{ item }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col s12 m12 l12">
+                        <div class="card-content center-align">
+                            <button id="start_button" class="btn waves-effect waves-light btn" type="submit" value="submit" style="background-color: #757575; width: 100%">Start Game</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="card-action">
+                        <ul class="collection">
+                            <li class="collection-item"><h6><strong>List of Players</strong></h6></li>
+                            {% for player in players %}
+                                <li class="collection-item">{{ player }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

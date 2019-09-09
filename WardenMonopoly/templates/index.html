@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+        <div class="card" >
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="card-title">
+                        <h4 class="center-align">Welcome</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="card-action">
+                        <h5 class="center-align">Please Enter Your Name</h5>
+                    </div>
+                </div>
+            </div>
+            {% from "includes/_formHelper.html" import render_field %}
+            <form method="POST" action="/">
+                <div class="row form-group">
+                    <div class="col s12 m12 l12">
+                        <div class="card-content">
+                            <div class="input-field">
+                                {{ render_field(form.player_name, clas_="form-control")}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row center-align form-group">
+                    <div class="col s12 m12 l12">
+                        <p>
+                            <label>
+                                <input name="player_status" type="radio" value="banker"/>
+                                <span>Banker</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="player_status" type="radio" value="player" checked />
+                                <span>Player</span>
+                            </label>
+                        </p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col s12 m12 l12">
+                        <div class="card-content">
+                            <button id="play_button" class="btn waves-effect waves-light btn" type="submit" value="submit" style="background-color: #757575; width: 100%">Play</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

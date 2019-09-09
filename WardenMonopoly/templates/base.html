@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "material/base.html" %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <title>Warden Woods Monopoly</title>
+</head>
+<body>
+{% include 'includes/_navbar.html' %}
+<div class="container">
+    {% block body %}{% endblock %}
+</div>
+</body>
+</html>

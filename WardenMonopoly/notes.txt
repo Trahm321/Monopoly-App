@@ -1,0 +1,3 @@
+Colors used: #D8DBE2 Gainsboro, #A9BCD0 Pastel Blue, #58A4B0 Cadet Blue, #373F51 Charcoal, #1B1B1E Eerie Black
+#0EAD69 Go Green, #20BF55 Malachite, #757575 Sonic Silver, #D90429 Medium Candy Apple Red, #8D99AE Greyish Blue,
+#2B2D42 Gunmetal
